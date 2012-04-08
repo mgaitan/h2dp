@@ -11,20 +11,31 @@ task logs in an automatic way.
 Install
 -------
 
-::
-    $ pip install git+git://github.com/nqnwebs/h2dp
+You can install it using pip::
+
+    $ sudo pip install git+git://github.com/nqnwebs/h2dp
+
+Usage
+-----
+
+Configure ``~/.h2dp/local_settings.py``. You can use the provided
+``local_settings.py.template`` as a template.
+
+Then run the script::
+
+    $ h2dp
 
 
 How it works
 -------------
 
-Using a dictionary in ``local_settings.py`` , you map each *syncable*
+Setting a dictionary in ``.h2dp/local_settings.py`` , you map each *syncable*
 hamster's category to a dotproject's site task_id. For example::
 
     HAMSTER_TO_DP = {'iteration22': 386, 'project-X': 387}
 
-If you log in Hamster a fact like *"#453@iteration22, modeling blah"* will be logged
-into  *https://YOUR_DOT_PROJECT/index.php?m=tasks&a=view&**task_id=386** *
+If a log in Hamster a fact is *"#453@iteration22, modeling blah"*, will be posted
+into  *https://YOUR_DOT_PROJECT/index.php?m=tasks&a=view&task_id=386 *
 with the description *"#453 modeling blah"*
 
 After sync, each fact posted is marked with a tag (*_logged_in_dp_*) to
@@ -34,6 +45,10 @@ be ommited the next time.
 
     Only hamster's facts that are keys in ``HAMSTER_TO_DP`` will be
     logged into dotproject,  so DO NOT forget to mark your task with
-    *@category* and update this dictionary when need it. 
+    *@category* and update this dictionary when need it.
 
+TODO
+----
+- Check/edit/update already posted logs
+- Tests
 
