@@ -1,0 +1,17 @@
+DP_BASE_URL = 'https://projects.machinalis.com/'
+DP_USERNAME = 'YOUR_PASSWOR'
+DP_PASSWORD = 'YOUR_USER'
+
+# hamster category to dp's task id map
+# For example:
+# {'it22': 389}  means hamster task marked into  '@it22' will be logged
+# into https://<DP_BASE_URL>/index.php?m=tasks&a=view&task_id=389
+#
+
+# Attention: 
+# only hamster's facts that belong to this categories will be
+# logged into dotproject
+# PLEASE DO NOT forget to mark your task with @category and
+# update this dictionary frequently
+
+HAMSTER_TO_DP = {'it22': 389, 'it23': 390}
