@@ -34,7 +34,7 @@ class DotProjectBot(object):
         url = self.base_url + 'index.php?m=tasks&a=view&task_id=%d&tab=1' % int(dp_task_id)
         response = self.br.open(url)
         if '<td class="error">Task ID is invalid' in response.read():
-            raise InvalidTask("The task doesn't exists in dP or you dont' have permission to see it")
+            raise InvalidTask("The task doesn't exists in dP or you don't have the permission to see it")
 
         self.br.select_form('editFrm')
         self.br.form.set_all_readonly(False)
