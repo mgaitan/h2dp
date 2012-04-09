@@ -1,6 +1,6 @@
 DP_BASE_URL = 'https://projects.machinalis.com/'
-DP_USERNAME = 'YOUR_PASSWOR'
-DP_PASSWORD = 'YOUR_USER'
+DP_USERNAME = 'YOUR_USERNAME'
+DP_PASSWORD = 'YOUR_PASSWORD'
 
 # hamster category to dp's task id map
 # For example:
