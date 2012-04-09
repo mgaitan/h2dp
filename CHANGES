@@ -1,0 +1,5 @@
+v 0.2  (Apr 9, 2012)
+--------------------
+- Bugfix:  _logged_in_dp_ tag is saved
+- Bugfix to validate models (activity pk can't be nullable)
+- Refactor of postable description

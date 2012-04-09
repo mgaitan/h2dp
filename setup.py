@@ -9,7 +9,7 @@ with open('README.rst') as readme:
 
 setup(
     name = 'h2dp',
-    version = '0.1.2',
+    version = '0.2',
     description = 'Hamster to dotProject logs sync tool',
     long_description = __doc__,
     author = u'Martín Gaitán',

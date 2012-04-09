@@ -17,7 +17,7 @@ class Category(models.Model):
         return '<Category: %s>' % self
 
 class Activity(models.Model):
-    id = models.IntegerField(null=True, primary_key=True, blank=True)
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=100, blank=True) 
     work = models.IntegerField(null=True, blank=True)
     activity_order = models.IntegerField(null=True, blank=True)
