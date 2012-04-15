@@ -1,3 +1,8 @@
+0.3 - in dev
+------------------
+
+- Replaced django by Peewee as dependency (ORM layer)
+
 v 0.2  (Apr 9, 2012)
 --------------------
 - Bugfix:  _logged_in_dp_ tag is saved
