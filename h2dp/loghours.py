@@ -13,7 +13,7 @@ def log_hours():
     
     categories = settings.HAMSTER_TO_DP.keys()
     tag_logged = Tag.get_or_create(name = '_logged_in_dp_')
-    assert tag_logged.id == 7
+    
 
     already_tagged = [ft.fact.id for ft in FactTag.filter(tag=tag_logged).distinct()]
     
