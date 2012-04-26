@@ -10,35 +10,33 @@ from browser import DotProjectBot
 
 def log_hours():
     logging.basicConfig(level=logging.INFO)
-    
     categories = settings.HAMSTER_TO_DP.keys()
-    tag_logged = Tag.get_or_create(name = '_logged_in_dp_')
+    tag_logged = Tag.get_or_create(name=settings.MARK_TAG)
     
-
-    already_tagged = [ft.fact.id for ft in FactTag.filter(tag=tag_logged).distinct()]
-    
-
     #get all facts that belong to exportable categories, finished, and
     # not previously posted
     facts = Fact.filter(
                 Q(activity__category__name__in=categories) & 
-                ~Q(end_time__is=None) &
+                ~Q(end_time__is=None) 
               # ~Q(fact_tags_set__tag=tag_logged)     # * see note
-                ~Q(id__in=already_tagged)
             )
-
+    already_tagged = [ft.fact.id for ft in
+                      FactTag.filter(tag=tag_logged).distinct()]
+    if already_tagged:
+        facts = facts.filter(~Q(id__in=already_tagged))
+    
     # NOTE
     # I want to exclude Facts tagged with ``tag_logged``, . but that ~Q() condition
     # only exclude the facts that are ONLY tagged with ``tag_logged``.
     
-    # the last Q is a workaround but imply a nested select.
+    # the extra filter Q is a workaround but imply another select.
     # How I should write this query?
-
+    
     if not facts.exists():
         logging.info("You're up to date! There is no unsynced tasks")
         return
         
-
+    
     br = DotProjectBot(settings.DP_BASE_URL)
     br.login(settings.DP_USERNAME, settings.DP_PASSWORD)
 

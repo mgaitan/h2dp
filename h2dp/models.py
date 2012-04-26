@@ -1,5 +1,10 @@
+# -*- coding: utf-8 -*-
+
 import peewee
 from settings import DB_PATH
+from datetime import datetime
+
+__all__ = ['Category', 'Activity', 'Fact', 'Tag', 'FactTag']
 
 hamster_db  = peewee.SqliteDatabase(DB_PATH)
 
@@ -12,6 +17,7 @@ class Category(peewee.Model):
     class Meta:
         database = hamster_db
         db_table = u'categories'
+        pass
 
     def __unicode__(self):
         return self.name
@@ -44,7 +50,7 @@ class Fact(peewee.Model):
     id = peewee.PrimaryKeyField()
     activity = peewee.ForeignKeyField(Activity)
     start_time = peewee.DateTimeField()
-    end_time = peewee.DateTimeField()
+    end_time = peewee.DateTimeField(null=True, blank=True)
     description = peewee.TextField(blank=True) 
     class Meta:
         database = hamster_db

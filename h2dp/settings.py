@@ -13,3 +13,5 @@ except IOError:
     print " ~/.h2dp/local_settings.py not found. You can use %s as a template" % template_path
     import sys
     sys.exit()
+
+MARK_TAG  = '_logged_in_dp_'      #change this could cause unsync problems. Take care.
